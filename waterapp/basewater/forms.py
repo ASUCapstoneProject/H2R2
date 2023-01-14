@@ -13,7 +13,7 @@ class WorkerSignUpForm(UserCreationForm):
     @transaction.atomic
     def save(self):
         user = super().save(commit=False)
-        user.is_student = True
+        user.is_user = True
         user.save()
         worker = Worker.objects.create(user=user)
         return user

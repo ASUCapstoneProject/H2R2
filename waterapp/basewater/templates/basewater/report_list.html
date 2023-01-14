@@ -1,0 +1,15 @@
+<a href="{% url 'logout' %}">Logout</a>
+<h2>Reports</h2>
+<p>{{request.user}}</p>
+<p>
+    {% for report in report %}
+    <tr>
+        <td>{{report.title}}</td>
+        <td><a href="{{report.link}}">Report</a></td>
+        <td>{{report.dec}}</td>
+        <td>{{report.created}}</td>
+    </tr>
+    {% empty %}
+    <h3>No Reports Generated</h3>
+    {% endfor %}
+</p>

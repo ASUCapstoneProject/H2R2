@@ -4,9 +4,9 @@ from django.shortcuts import redirect, render
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
-
+from django.views.generic.list import ListView
 from .forms import WorkerSignUpForm
-from .models import User
+from .models import User, Report
 from django.template import loader
 
 from .decorators import user_required, manager_required
@@ -23,6 +23,16 @@ class CustomLoginView(LoginView):
 # Create your views here.
 def test(request):
      return render(request, 'basewater/test.html')
+
+class TaskList(ListView):
+    model = Report
+    context_object_name = 'report'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['report'] = context['report'].filter(user=self.request.user)
+        return context
+
 
 class WorkerSignUpView(CreateView):
     model = User
