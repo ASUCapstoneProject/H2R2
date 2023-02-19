@@ -1,4 +1,44 @@
-<a href="{% url 'logout' %}">Logout</a>
+{% extends 'basewater/base.html' %}
+{% block content %}
+
+<div class="card-body text-center">
+  <img src="https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=6&m=1223671392&s=170667a&w=0&h=zP3l7WJinOFaGb2i1F4g8IS2ylw0FlIaa6x3tP9sebU=" alt="avatar"
+    class="rounded-circle img-fluid" style="width: 150px;">
+  <h5 class="my-3">{{request.user}}</h5>
+  <p class="text-muted mb-1">{{request.user.email}}</p>
+</div>
+
+{% for report in report %}
+{% if report.complete is True %}
+<div class="card" style="margin: 5%;">
+  <div class="card-header">{{report.title}}</div>
+    <div class="card-body">
+      <!-- <h5 class="card-title">{{report.title}}</h5> -->
+      <p>{{report.created}}</p>
+      <p class="card-text">{{report.dec}}</p>
+      <a href="{{report.link}}" target="_blank" class="btn btn-primary" style="background-color: #1089B8; color:black">Download Report</a>
+    </div>
+</div>
+
+{% else %}
+<div class="card" style="margin-top: 5%; margin-left:10%; margin-right:10%">
+  <div class="card-header"> Report Generated - Awating Payment</div>
+  <div class="card-body">
+    <h5 class="card-title">You can view your report once the payment is processed.</h5>
+  </div>
+</div>
+{% endif %}
+
+{% empty %}
+<div class="card" style="margin-top: 5%; margin-left:10%; margin-right:10%">
+    <div class="card-header"> No reports generated yet</div>
+    <div class="card-body">
+      <h5 class="card-title">You can view your report here onece we are done analyzing it.</h5>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
+<!-- <a href="{% url 'logout' %}">Logout</a>
 <h2>Reports</h2>
 <p>{{request.user}}</p>
 <p>
@@ -12,4 +52,5 @@
     {% empty %}
     <h3>No Reports Generated</h3>
     {% endfor %}
-</p>
+</p> -->
+

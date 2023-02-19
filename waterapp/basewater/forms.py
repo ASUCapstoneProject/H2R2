@@ -9,6 +9,7 @@ class WorkerSignUpForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = User
+        fields = ('username', 'email')
 
     @transaction.atomic
     def save(self):
