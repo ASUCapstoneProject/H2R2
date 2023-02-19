@@ -132,8 +132,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST="smtp-relay.sendinblue.com"
-EMAIL_PORT=587
+EMAIL_HOST="mail.smtp2go.com"
+EMAIL_PORT=2525
 EMAIL_USE_TLS=True
 EMAIL_HOST_USER = 'h2r2contact@gmail.com'
-EMAIL_HOST_PASSWORD = 'xsmtpsib-65474b70861cd1a75fbd90553a860aeddc0c50c0ce171cd5ea0543ec1be4bdbf-YrWA58Oka0DjL1gS'
+EMAIL_HOST_PASSWORD = '7bvTDZ5X6k1Q7Gkz'
