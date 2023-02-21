@@ -5,7 +5,7 @@ from django.views.generic import CreateView, TemplateView
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
-from .forms import WorkerSignUpForm
+from .forms import WorkerSignUpForm, ContactForm
 from .models import User, Report
 from django.template import loader
 from django.conf import settings
@@ -13,8 +13,9 @@ from .decorators import user_required, manager_required
 import stripe
 from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.core.mail import EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives, send_mail, BadHeaderError
 from django.template.loader import get_template
+
 
 
 class CustomLoginView(LoginView):
@@ -27,7 +28,22 @@ class CustomLoginView(LoginView):
 
 # Create your views here.
 def test(request):
-     return render(request, 'basewater/test.html')
+    if request.method == "GET":
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data["email"]
+            from_email = 'h2r2contact@gmail.com'
+            email = 'rmkashya@asu.edu'
+            message = form.cleaned_data['message']
+            try:
+                send_mail(subject, message, from_email, [email])
+            except BadHeaderError:
+                return HttpResponse("Invalid header found.")
+            return redirect('home')
+    return render(request,'basewater/test.html', {"form": form})
+    # return render(request, 'basewater/test.html', context)
 
 class TaskList(ListView):
     model = Report

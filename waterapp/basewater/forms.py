@@ -18,3 +18,7 @@ class WorkerSignUpForm(UserCreationForm):
         user.save()
         worker = Worker.objects.create(user=user)
         return user
+
+class ContactForm(forms.Form):
+    email = forms.CharField(required=True)
+    message = forms.CharField(widget=forms.Textarea, required=True)
