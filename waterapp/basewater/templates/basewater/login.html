@@ -1,5 +1,6 @@
 {% load crispy_forms_tags %}
-<!doctype html>
+{% load static %}
+<!-- <!doctype html>
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -17,10 +18,139 @@
       </div>
     </div>
     <footer class="bg-light text-center text-lg-start">
-      <!-- Copyright -->
       <div class="text-center p-3" style="background-color: white;">
         <p> Copyright &copy; 2022-<script>document.write(new Date().getFullYear())</script> H2R2 All Rights Reserved</p>
       </div>
-      <!-- Copyright -->
     </footer>
-</html>
+</html> -->
+
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Lindy - Bootstrap 5 UI Kit</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.svg"/>
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap-5.0.0-alpha-2.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/LineIcons.2.0.css' %}"/>
+    <link rel="stylesheet" href="{% static '/css/tiny-slider.css' %}"/>
+    <link rel="stylesheet" href="{% static '/css/glightbox.min.css' %}"/>
+    <link rel="stylesheet" href="{% static '/css/animate.css' %}"/>
+    <link rel="stylesheet" href="{% static '/css/lindy-uikit.css' %}"/>
+  </head>
+  <body style="background-color: whitesmoke;">
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+      <div class="loader">
+        <div class="spinner">
+          <div class="spinner-container">
+            <div class="spinner-rotator">
+              <div class="spinner-left">
+                <div class="spinner-circle"></div>
+              </div>
+              <div class="spinner-right">
+                <div class="spinner-circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ========================= preloader end ========================= -->
+
+		<!-- ========================= signup-style-1 start ========================= -->
+      <section class="signup signup-style-1 mb-80" style="background-color: whitesmoke;" >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="signup-content-wrapper">
+              <div class="section-title">
+                <h3 class="mb-20">Login</h3>
+                <p>Get your water tested now!</p>
+              </div>
+              <div class="image">
+                <img src="{% static '/img/signup/signup-1/signup-img.svg' %} " alt="" class="w-100">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="signup-form-wrapper">
+              <form method="post" class="signup-form">
+                {% csrf_token %}
+                <div class="single-input">
+                  {{form|crispy}}
+                </div>
+                <div class="signup-button mb-25">
+                  <button class="button button-lg radius-10 btn-block" type="submit">Sign up</button>
+                </div>
+                <p>Dont have an account? <a href="{% url 'signup' %}">Sign Up!</a> </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+		<!-- ========================= signup-style-1 end ========================= -->
+
+        <!-- ========================= JS here ========================= -->
+        <script src="{% static '/js/bootstrap.5.0.0.alpha-2-min.js' %}"></script>
+        <script src="{% static '/js/tiny-slider.js' %}"></script>
+        <script src="{% static '/js/count-up.min.js' %}"></script>
+        <script src="{% static '/js/imagesloaded.min.js' %}"></script>
+        <script src="{% static '/js/isotope.min.js' %}"></script>
+        <script src="{% static '/js/wow.min.js' %}"></script>
+        <script src="{% static '/js/main.js' %}"></script>
+    
+        <script>
+    
+          // ============= video popup
+          GLightbox({
+            'href': 'static/video/video.mp4',
+            'type': 'video',
+            'source': 'local', //vimeo, youtube or local
+            'width': 900,
+            'autoplayVideos': true,
+          });
+    
+          // header-2  toggler-icon
+          let navbarToggler2 = document.querySelector(".header-2 .navbar-toggler");
+          var navbarCollapse2 = document.querySelector(".header-2 .navbar-collapse");
+    
+          document.querySelectorAll(".header-2 .page-scroll").forEach(e =>
+              e.addEventListener("click", () => {
+                  navbarToggler2.classList.remove("active");
+                  navbarCollapse2.classList.remove('show')
+              })
+          );
+          navbarToggler2.addEventListener('click', function() {
+              navbarToggler2.classList.toggle("active");
+          })
+          
+    
+          // header-4  toggler-icon
+          let navbarToggler4 = document.querySelector(".header-4 .navbar-toggler");
+          var navbarCollapse4 = document.querySelector(".header-4 .navbar-collapse");
+    
+          document.querySelectorAll(".header-4 .page-scroll").forEach(e =>
+              e.addEventListener("click", () => {
+                  navbarToggler4.classList.remove("active");
+                  navbarCollapse4.classList.remove('show')
+              })
+          );
+          navbarToggler4.addEventListener('click', function() {
+              navbarToggler4.classList.toggle("active");
+          }) 
+    
+        </script>
+        <footer class="bg-light text-center text-lg-start">
+          <div class="text-center p-3" style="background-color: white;">
+            <p> Copyright &copy; 2022-<script>document.write(new Date().getFullYear())</script> H2R2 All Rights Reserved</p>
+          </div>
+        </footer>
+      </body>
+    </html>
