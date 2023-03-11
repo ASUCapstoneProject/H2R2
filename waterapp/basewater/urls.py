@@ -1,7 +1,7 @@
 from django.urls import include, path
 
 from . import views
-from .views import WorkerSignUpView, CustomLoginView, TaskList
+from .views import WorkerSignUpView, CustomLoginView, TaskList, TaskCreate
 from django.contrib.auth.views import LogoutView
 
 urlpatterns =[
@@ -16,5 +16,6 @@ urlpatterns =[
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('reports/', TaskList.as_view(), name='report' ),
     # path('accounts/signup/teacher/', teachers.TeacherSignUpView.as_view(), name='teacher_signup'),
-    path('charge/', views.charge, name='charge')
+    path('charge/', views.charge, name='charge'),
+    path('datapage/', TaskCreate.as_view(), name='datapage')
 ]

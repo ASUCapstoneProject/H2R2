@@ -24,3 +24,18 @@ class Report(models.Model):
     
     class Meta:
         ordering = ['complete']
+
+class WaterQuality(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    pH_value = models.DecimalField(max_digits=4, decimal_places=2) # pH value
+    hardness = models.IntegerField() # Hardness
+    TDS = models.IntegerField() # Total Dissolved Solids (TDS)
+    chloramines = models.DecimalField(max_digits=4, decimal_places=2) # Chloramines
+    sulfate = models.DecimalField(max_digits=4, decimal_places=2) # Sulfate
+    conductivity = models.DecimalField(max_digits=4, decimal_places=2) # Conductivity
+    organic_carbon = models.DecimalField(max_digits=4, decimal_places=2) # Organic Carbon (TOC)
+    trihalomethanes = models.DecimalField(max_digits=4, decimal_places=2) # Trihalomethanes (THMs)
+    turbidity = models.DecimalField(max_digits=4, decimal_places=2) # Turbidity
+
+    def __str__(self):
+        return f'Water quality {self.id}'

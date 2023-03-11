@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from .forms import WorkerSignUpForm, ContactForm
-from .models import User, Report
+from .models import User, Report, WaterQuality
 from django.template import loader
 from django.conf import settings
 from .decorators import user_required, manager_required
@@ -15,6 +15,8 @@ from django.http.response import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import EmailMultiAlternatives, send_mail, BadHeaderError
 from django.template.loader import get_template
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 
 
@@ -25,6 +27,11 @@ class CustomLoginView(LoginView):
 
     def get_success_url(self):
         return reverse_lazy('report')
+
+
+def datapage(request):
+    return render(request,'basewater/datapage.html')
+
 
 # Create your views here.
 def test(request):
@@ -45,6 +52,7 @@ def test(request):
     return render(request,'basewater/test.html', {"form": form})
     # return render(request, 'basewater/test.html', context)
 
+@method_decorator([login_required], name='dispatch')
 class TaskList(ListView):
     model = Report
     context_object_name = 'report'
@@ -56,7 +64,11 @@ class TaskList(ListView):
         # context['key'] = settings.STRIPE_SECRET_KEY
         return context
 
-
+@method_decorator([login_required, manager_required], name='dispatch')
+class TaskCreate(CreateView):
+    model = WaterQuality
+    fields = '__all__'
+    success_url = 'report'
 
 class WorkerSignUpView(CreateView):
     model = User
@@ -79,6 +91,7 @@ class WorkerSignUpView(CreateView):
         login(self.request, user)
         return redirect('report')
 
+@login_required
 def meeting(request):
      return render(request, 'basewater/meeting.html')
 

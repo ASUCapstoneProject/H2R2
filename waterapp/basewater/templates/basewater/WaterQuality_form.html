@@ -1,0 +1,17 @@
+{% extends 'basewater/base.html' %}
+{% load crispy_forms_tags %}  
+{% block content %}
+
+<div class="card" style="margin-top: 5%; margin-left:10%; margin-right:10%">
+  <div class="card-header"> Send Data To Analyst</div>
+  <form method="post" class="signup-form">
+    {% csrf_token %}
+    <div class="single-input">
+      {{form | crispy}}
+    </div>
+    <div class="signup-button mb-25">
+      <button class="button button-lg radius-10 btn-block" type="submit" >Submit</button>
+    </div>
+</form>
+  <div class="card-body">
+{% endblock %}  
