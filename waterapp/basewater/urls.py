@@ -1,7 +1,7 @@
 from django.urls import include, path
 
 from . import views
-from .views import WorkerSignUpView, CustomLoginView, TaskList, TaskCreate
+from .views import WorkerSignUpView, CustomLoginView, TaskList, TaskCreate, update_user
 from django.contrib.auth.views import LogoutView
 
 urlpatterns =[
@@ -19,4 +19,5 @@ urlpatterns =[
     path('charge/', views.charge, name='charge'),
     path('datapage/', TaskCreate.as_view(), name='datapage'),
     path('updateprofile/', views.update_user, name='updateprofile')
+    # path('updateprofile/', Update_user.as_view(), name='updateprofile')
 ]   

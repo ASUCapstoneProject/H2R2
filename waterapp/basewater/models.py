@@ -7,9 +7,16 @@ class User(AbstractUser):
     is_manager = models.BooleanField(default=False)
     email = models.EmailField(max_length = 254, default=None)
 
+    def __str__(self):
+        id = self.id
+        return f'{self.username}'
+
 class Worker(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f'{self.user}'
 
 class Report(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)

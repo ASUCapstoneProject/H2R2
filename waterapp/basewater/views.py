@@ -5,7 +5,7 @@ from django.views.generic import CreateView, TemplateView, UpdateView
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
-from .forms import WorkerSignUpForm, ContactForm
+from .forms import WorkerSignUpForm, ContactForm, UserUpdateForm
 from .models import User, Report, WaterQuality, Worker
 from django.template import loader
 from django.conf import settings
@@ -17,6 +17,7 @@ from django.core.mail import EmailMultiAlternatives, send_mail, BadHeaderError
 from django.template.loader import get_template
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib import messages #import messages
 
 
 
@@ -71,18 +72,18 @@ class TaskCreate(CreateView):
     def get_success_url(self):
         return reverse_lazy('report')
 
+
 @login_required
 def update_user(request):
-    current_user = User.objects.get(id=request.user.id)
-    form = WorkerSignUpForm(request.POST or None, instance=current_user)
-    # form = WorkerSignUpForm(current_user, request.POST)
-    if form.is_valid():
-        form.save()
-        login(request, current_user)
-        return redirect('report')
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile details updated.')
+            return redirect('report')
+    else:
+        form = UserUpdateForm(instance=request.user)
     return render(request, 'basewater/User_form.html', {'form': form})
-    
-
 
 class WorkerSignUpView(CreateView):
     model = User
