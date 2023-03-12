@@ -22,3 +22,5 @@ class WorkerSignUpForm(UserCreationForm):
 class ContactForm(forms.Form):
     email = forms.CharField(required=True)
     message = forms.CharField(widget=forms.Textarea, required=True)
+
+

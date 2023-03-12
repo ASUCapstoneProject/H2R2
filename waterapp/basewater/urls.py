@@ -17,5 +17,6 @@ urlpatterns =[
     path('reports/', TaskList.as_view(), name='report' ),
     # path('accounts/signup/teacher/', teachers.TeacherSignUpView.as_view(), name='teacher_signup'),
     path('charge/', views.charge, name='charge'),
-    path('datapage/', TaskCreate.as_view(), name='datapage')
-]
+    path('datapage/', TaskCreate.as_view(), name='datapage'),
+    path('updateprofile/', views.update_user, name='updateprofile')
+]   

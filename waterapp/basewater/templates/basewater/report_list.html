@@ -17,7 +17,8 @@
         <!-- <h5 class="card-title">{{report.title}}</h5> -->
         <p>{{report.created}}</p>
         <p class="card-text">{{report.dec}}</p>
-        <a href="{{report.link}}" target="_blank" class="btn btn-primary" style="background-color: #1089B8; color:black">Download Report</a>
+        <!-- <a href="{{report.link}}" target="_blank" class="btn btn-primary" style="background-color: #1089B8; color:black">Download Report</a> -->
+        <a href="{{report.link}}" target="_blank" class="button button"> Download Report <i class="lni lni-chevron-right"></i> </a>
       </div>
   </div>
 
@@ -40,9 +41,9 @@
   {% endfor %}
 {% else %}
 <div class="card" style="margin-top: 5%; margin-left:10%; margin-right:10%">
-  <div class="card-header"> You are a Manager</div>
+  <div class="card-header"> You are a Technician</div>
   <div class="card-body">
-    <a href="{% url 'datapage' %}" target="_blank" class="btn btn-primary" style="background-color: #1089B8; color:black">Send Data</a>
+    <a href="{% url 'datapage' %}" class="button button"> Send Data <i class="lni lni-chevron-right"></i> </a>
   </div>
 </div>
 {% endif %}

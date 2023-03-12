@@ -3,14 +3,14 @@
 {% block content %}
 
 <div class="card" style="margin-top: 5%; margin-left:10%; margin-right:10%">
-  <div class="card-header"> Send Data To Analyst</div>
+  <div class="card-header"> Update Profile.</div>
   <form method="post" class="signup-form">
     {% csrf_token %}
     <div class="single-input" style="padding-left: 5%; padding-right: 5%; padding-top: 1%">
       {{form | crispy}}
     </div>
     <div class="signup-button mb-25" style="padding-left: 5%; padding-right: 5%; padding-top: 5%">
-      <button class="button button-lg radius-10 btn-block" type="submit" >Submit</button>
+      <button class="button button-lg radius-10 btn-block" type="submit" >Update Profile</button>
     </div>
 </form>
   <div class="card-body">

@@ -1,12 +1,12 @@
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView, UpdateView
 from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from .forms import WorkerSignUpForm, ContactForm
-from .models import User, Report, WaterQuality
+from .models import User, Report, WaterQuality, Worker
 from django.template import loader
 from django.conf import settings
 from .decorators import user_required, manager_required
@@ -64,11 +64,25 @@ class TaskList(ListView):
         # context['key'] = settings.STRIPE_SECRET_KEY
         return context
 
-@method_decorator([login_required, manager_required], name='dispatch')
+# @method_decorator([login_required, manager_required], name='dispatch')
 class TaskCreate(CreateView):
     model = WaterQuality
     fields = '__all__'
-    success_url = 'report'
+    def get_success_url(self):
+        return reverse_lazy('report')
+
+@login_required
+def update_user(request):
+    current_user = User.objects.get(id=request.user.id)
+    form = WorkerSignUpForm(request.POST or None, instance=current_user)
+    # form = WorkerSignUpForm(current_user, request.POST)
+    if form.is_valid():
+        form.save()
+        login(request, current_user)
+        return redirect('report')
+    return render(request, 'basewater/User_form.html', {'form': form})
+    
+
 
 class WorkerSignUpView(CreateView):
     model = User

@@ -1,25 +1,136 @@
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1089B8;">
-    <a class="navbar-brand" href="{% url 'home' %}">H2R2</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'report' %}">Reports <span class="sr-only"></span></a>
-        </li>
-        <li>
-          <a class="nav-link" href="{% url 'schdule' %}">Schdule <span class="sr-only">(current)</span></a>
-        </li>
-        
-      </ul>
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>H2R2</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.svg"/>
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap-5.0.0-alpha-2.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/LineIcons.2.0.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/tiny-slider.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/glightbox.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/animate.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/lindy-uikit.css' %}" />
+  </head>
+  <body style="background: #FFFFFF">
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+      <div class="loader">
+        <div class="spinner">
+          <div class="spinner-container">
+            <div class="spinner-rotator">
+              <div class="spinner-left">
+                <div class="spinner-circle"></div>
+              </div>
+              <div class="spinner-right">
+                <div class="spinner-circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-      <a class="my-2 my-sm-0" href="{% url 'logout' %}" style="text-decoration: none; color: black;">Logout</a>
-</nav>
-{% block content %}
-{% endblock %}
+    <!-- ========================= preloader end ========================= -->
+
+
+
+
+
+      <!-- ========================= header-2 start ========================= -->
+  <header class="header header-2 mb-30">
+    <div class="navbar-area" style="padding-bottom: 0%;">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg">
+              <a class="navbar-brand" href="{% url 'report' %}">
+                <img src="{% static '/img/logo/logot.svg' %}" alt="Logo" style="width:400; height:400; viewBox:0 0 200 200"/>
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2"
+                aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+                <span class="toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent2">
+                <ul id="nav2" class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="page-scroll" href="{% url 'report' %}">Reports</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="page-scroll" href="{% url 'schdule' %}">Schdule</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="page-scroll" href="{% url 'updateprofile' %}">Profile</a>
+                  </li>
+                </ul>
+                <a href="{% url 'logout' %}" class="button button-sm radius-10 d-none d-lg-flex">Logout</a>
+              </div>
+              <!-- navbar collapse -->
+            </nav>
+            <!-- navbar -->
+          </div>
+        </div>
+        <!-- row -->
+      </div>
+      <!-- container -->
+    </div>
+    <!-- navbar area -->
+  </header>
+  <!-- ========================= header-2 end ========================= -->
+
+
+  {% block content %}
+  {% endblock %}
+
+
+
+    <!-- ========================= JS here ========================= -->
+    <script src="{% static '/js/bootstrap.5.0.0.alpha-2-min.js' %}"></script>
+    <script src="{% static '/js/tiny-slider.js' %}"></script>
+    <script src="{% static '/js/count-up.min.js' %}"></script>
+    <script src="{% static '/js/imagesloaded.min.js' %}"></script>
+    <script src="{% static '/js/isotope.min.js' %}"></script>
+    <script src="{% static '/js/wow.min.js' %}"></script>
+    <script src="{% static '/js/main.js' %}"></script>
+
+    <script>
+      //===== header-1 toggler-icon
+      let navbarToggler = document.querySelector(".header-1 .navbar-toggler");
+      var navbarCollapse = document.querySelector(".header-1 .navbar-collapse");
+
+      document.querySelectorAll(".header-1 .page-scroll").forEach(e =>
+          e.addEventListener("click", () => {
+              navbarToggler.classList.remove("active");
+              navbarCollapse.classList.remove('show')
+          })
+      );
+      navbarToggler.addEventListener('click', function() {
+          navbarToggler.classList.toggle("active");
+      })
+      
+
+      // header-2  toggler-icon
+      let navbarToggler2 = document.querySelector(".header-2 .navbar-toggler");
+      var navbarCollapse2 = document.querySelector(".header-2 .navbar-collapse");
+
+      document.querySelectorAll(".header-2 .page-scroll").forEach(e =>
+          e.addEventListener("click", () => {
+              navbarToggler2.classList.remove("active");
+              navbarCollapse2.classList.remove('show')
+          })
+      );
+      navbarToggler2.addEventListener('click', function() {
+          navbarToggler2.classList.toggle("active");
+      })
+    
+    </script>
+  </body>
+</html>
