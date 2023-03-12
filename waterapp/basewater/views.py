@@ -58,9 +58,13 @@ class TaskList(ListView):
     model = Report
     context_object_name = 'report'
 
+
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['report'] = context['report'].filter(user=self.request.user)
+        context['complete_count'] = Report.objects.filter(user=self.request.user, complete=True).count()
+        context['incomplete_count'] = Report.objects.filter(user=self.request.user, complete=False).count()
         # context['key'] = settings.STRIPE_PUBLISHABLE_KEY
         # context['key'] = settings.STRIPE_SECRET_KEY
         return context

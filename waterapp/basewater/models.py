@@ -30,7 +30,7 @@ class Report(models.Model):
         return self.title
     
     class Meta:
-        ordering = ['complete']
+        ordering = ['-created']
 
 class WaterQuality(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
