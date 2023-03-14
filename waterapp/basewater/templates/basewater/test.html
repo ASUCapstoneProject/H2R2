@@ -8,7 +8,7 @@
     <title>H2R2</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="static/img/favicon.svg"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static '/img/favicon.ico' %}"/>
     <!-- Place favicon.ico in the root directory -->
 
     <!-- ========================= CSS here ========================= -->
@@ -95,8 +95,8 @@
             <div class="col-lg-6">
               <div class="hero-content-wrapper">
                 <h4>Water Quality Experts</h4>
-                <h2 class="mb-30">Get Accurate Water Quality Reports Instantley</h2>
-                <p class="mb-50">Track the uqality of your water with our simple and comprehensive reports</p>
+                <h2 class="mb-30">Get Accurate Water Quality Reports Instantley!</h2>
+                <p class="mb-50">Track the quality of your water with our simple and comprehensive reports.</p>
                 <div class="buttons">
                   <a href="{% url 'signup' %}" class="button button-lg">Sign Up</a>
                 </div>
@@ -122,8 +122,8 @@
             <div class="row">
               <div class="col-xl-7 col-lg-10 col-md-9">
                 <div class="section-title mb-60">
-                  <h3 class="mb-15">The future of designing starts here</h3>
-                  <p>Stop wasting time and money designing and managing a website that doesn’t get results. Happiness guaranteed!</p>
+                  <h3 class="mb-15">How it works.</h3>
+                  <p>Stop wasting time and money paying for very expensive tests!</p>
                 </div>
               </div>
             </div>
@@ -135,8 +135,8 @@
                     <i class="lni lni-vector"></i>
                   </div>
                   <div class="content">
-                    <h5 class="mb-25">Graphics Design</h5>
-                    <p>Short description for the ones who look for something new.</p>
+                    <h5 class="mb-25">Step 1</h5>
+                    <p>Make an account with us.</p>
                   </div>
                 </div>
               </div>
@@ -146,8 +146,8 @@
                     <i class="lni lni-layers"></i>
                   </div>
                   <div class="content">
-                    <h5 class="mb-25">UI/UX Design</h5>
-                    <p>Short description for the ones who look for something new.</p>
+                    <h5 class="mb-25">Step 2</h5>
+                    <p>Request a technician to come and test the water at your factory!</p>
                   </div>
                 </div>
               </div>
@@ -157,8 +157,8 @@
                     <i class="lni lni-layout"></i>
                   </div>
                   <div class="content">
-                    <h5 class="mb-25">Web Design</h5>
-                    <p>Short description for the ones who look for something new.</p>
+                    <h5 class="mb-25">Step 3</h5>
+                    <p>Wait a few days till our analysts generate your report.</p>
                   </div>
                 </div>
               </div>
@@ -168,8 +168,8 @@
                     <i class="lni lni-display"></i>
                   </div>
                   <div class="content">
-                    <h5 class="mb-25">Web Development</h5>
-                    <p>Short description for the ones who look for something new.</p>
+                    <h5 class="mb-25">Step 4</h5>
+                    <p>Make a payment and donwload your report instantly</p>
                   </div>
                 </div>
               </div>
@@ -318,4 +318,42 @@
 
     </script>
   </body>
+  		<!-- ========================= footer style-1 start ========================= -->
+      <footer class="footer footer-style-1 mb-80" style="margin-bottom: 0%; margin-top:5%;">
+        <div class="container">
+          <div class="widget-wrapper">
+            <div class="row">
+              <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="footer-widget">
+                  <div class="logo">
+                    <a href="#0"> <img src="assets/img/logo/logo.svg" alt=""> </a>
+                  </div>
+                  <p class="desc">Track the quality of your water with our simple and comprehensive reports.</p>
+                  <ul class="socials">
+                    <li> <a href="#0"> <i class="lni lni-facebook-filled"></i> </a> </li>
+                    <li> <a href="#0"> <i class="lni lni-twitter-filled"></i> </a> </li>
+                    <li> <a href="#0"> <i class="lni lni-instagram-filled"></i> </a> </li>
+                    <li> <a href="#0"> <i class="lni lni-linkedin-original"></i> </a> </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xl-2 offset-xl-1 col-lg-2 col-md-6 col-sm-6">
+                <div class="footer-widget">
+                  <h6>Quick Link</h6>
+                  <ul class="links">
+                    <li> <a href="{% url 'home' %}">Home</a> </li>
+                    <li> <a href="{% url 'home' %}#about">About</a> </li>
+                    <li> <a href="{% url 'home' %}#feature">Feature</a> </li>
+                    <li> <a href="{% url 'home' %}#contact">Contact</a> </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="copyright-wrapper">
+            <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> H2R2 All Rights Reserved</p>
+          </div>
+        </div>
+      </footer>
+      <!-- ========================= footer style-1 end ========================= -->
 </html>

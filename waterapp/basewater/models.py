@@ -34,6 +34,7 @@ class Report(models.Model):
 
 class WaterQuality(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    company = models.CharField(max_length=200)
     pH_value = models.DecimalField(max_digits=4, decimal_places=2) # pH value
     hardness = models.IntegerField() # Hardness
     TDS = models.IntegerField() # Total Dissolved Solids (TDS)
@@ -45,4 +46,4 @@ class WaterQuality(models.Model):
     turbidity = models.DecimalField(max_digits=4, decimal_places=2) # Turbidity
 
     def __str__(self):
-        return f'Water quality {self.id}'
+        return f'Water quality for {self.company}'
