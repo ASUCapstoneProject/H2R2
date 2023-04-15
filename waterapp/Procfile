@@ -1,1 +1,1 @@
-web: gunicorn waterapp.wsgi --log-file -
+web: gunicorn waterapp.wsgi 
